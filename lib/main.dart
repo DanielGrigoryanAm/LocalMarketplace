@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:local_marketplace/presentation/screens/map_screen.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  String envPath = "/Users/daniel/Desktop/Flutter_a/local_marketplace/.env";
+  await dotenv.load(fileName: envPath);
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -11,11 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      debugShowCheckedModeBanner: false,
       home: MapScreen(),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 
@@ -7,6 +8,7 @@ class MapScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mapboxToken = dotenv.env['MAPBOX_ACCESS_TOKEN'] ?? '';
     return Scaffold(
       appBar: AppBar(title: Text("Map")),
       body: FlutterMap(
@@ -16,12 +18,8 @@ class MapScreen extends StatelessWidget {
         ),
         children: [
           TileLayer(
-            urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-            additionalOptions: const {
-              'accessToken':
-                  'pk.eyJ1IjoiZGFuaWVsZ3JpZyIsImEiOiJjbTV1dGt3MTkwMGNoMnFxejJyaWp0eW40In0.RLGeP_Y2_R0wJ-Q29h2RNg',
-              'id': 'mapbox/streets-v11',
-            },
+            urlTemplate:
+                "https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=$mapboxToken",
           ),
         ],
       ),
