@@ -4,7 +4,7 @@ part 'marketplace_service.chopper.dart';
 
 @ChopperApi()
 abstract class MarketplaceService extends ChopperService {
-  @Get(path: '/products')
+  @GET(path: '/products')
   Future<Response> getProducts();
 
   static MarketplaceService create() {

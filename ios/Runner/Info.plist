@@ -45,5 +45,10 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Приложению нужен доступ к вашему местоположению для отображения вашего текущего положения на карте.</string>
+
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Приложению нужен доступ к вашему местоположению даже в фоновом режиме.</string>
 </dict>
 </plist>
